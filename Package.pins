@@ -92,6 +92,12 @@
       "version": "1.2.7"
     },
     {
+      "package": "SwiftyGPIO",
+      "reason": null,
+      "repositoryURL": "https://github.com/uraimo/SwiftyGPIO.git",
+      "version": "0.8.9"
+    },
+    {
       "package": "TLS",
       "reason": null,
       "repositoryURL": "https://github.com/vapor/tls.git",
