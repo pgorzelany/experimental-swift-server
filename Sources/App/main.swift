@@ -9,21 +9,31 @@ let drop = Droplet()
 //ledGpio.direction = .OUT
 
 drop.get { req in
-    return "To jest vapor"
+    return "Success"
 }
 
-drop.get("led", "turn_on") { (request) in
-//    ledGpio.value = 1
-    return "The led should turn on"
+drop.patch("led", "switch_on") { (request) in
+    return "OK"
 }
 
-drop.get("led", "turn_off") { (request) in
-//    ledGpio.value = 0
-    return "The led should turn off"
+drop.patch("led", "switch_off") { (request) in
+    return "OK"
 }
 
-drop.get("post", Int.self) { (request, postNumber) in
-    return "This is the post site for post number \(postNumber)"
+drop.patch("led", "start_blink") { (request) in
+    return "OK"
+}
+
+drop.patch("led", "stop_blink") { (request) in
+    return "OK"
+}
+
+drop.patch("led", "intensity") { (request) in
+    guard let intensity = request.query?["intensity"]?.double else {
+        throw Abort.badRequest
+    }
+    
+    return "Ok"
 }
 
 drop.run()
