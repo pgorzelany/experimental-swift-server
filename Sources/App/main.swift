@@ -2,11 +2,6 @@ import Vapor
 import SwiftyGPIO
 
 let drop = Droplet()
-//let gpios = SwiftyGPIO.GPIOs(for: .RaspberryPi2)
-//guard let ledGpio = gpios[GPIOName.P27] else {
-//    fatalError("Could not initialize gpio pin")
-//}
-//ledGpio.direction = .OUT
 
 drop.get { req in
     return "Success"
