@@ -2,13 +2,7 @@ import Vapor
 import SwiftyGPIO
 
 let drop = Droplet()
-let raspberry: RaspberryApi
-
-#if os(Linux)
-    raspberry = Raspberry.shared
-#else
-    raspberry = MockRaspberry.shared
-#endif
+let raspberry = RaspberryFactory.getRaspberry()
 
 drop.get { req in
     return "Success"
