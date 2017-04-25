@@ -15,8 +15,8 @@ class PWMLed {
     
     // MARK: Properties
     
-    let pwm: PWMOutput
-    var intensity = 1.0
+    private let pwm: PWMOutput
+    private var intensity = 1.0
     private var defaultPeriod = 300
     
     // MARK: Lifecycle
