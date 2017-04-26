@@ -37,20 +37,20 @@ class Led {
     }
     
     func toggle() {
+        print("\(#function) called on \(String(describing: type(of: self)))")
         gpio.value = gpio.value == 0 ? 1 : 0
     }
     
     func startBlink() {
         print("\(#function) called on \(String(describing: type(of: self)))")
-        blinkTimer = Timer(timeInterval: defaultBlinkInterval, repeats: true, block: { [unowned self](timer) in
-            print("Toggling led")
+        blinkTimer = Timer.scheduledTimer(withTimeInterval: defaultBlinkInterval, repeats: true, block: { (timer) in
             self.toggle()
         })
-        blinkTimer?.fire()
     }
     
     func stopBlink() {
         blinkTimer?.invalidate()
         blinkTimer = nil
+        switchOff()
     }
 }
