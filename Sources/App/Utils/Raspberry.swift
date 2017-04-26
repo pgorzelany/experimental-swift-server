@@ -12,8 +12,8 @@ import SwiftyGPIO
 class Raspberry: RaspberryApi {
     
     struct Config {
-        static let defaultLedGpioName = GPIOName.P0
-        static let defaultPWMLedGpioName = GPIOName.P0
+        static let defaultLedGpioName = GPIOName.P27
+        static let defaultPWMLedGpioName = GPIOName.P18
     }
     
     // MARK: Shared instance
