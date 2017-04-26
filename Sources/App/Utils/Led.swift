@@ -45,6 +45,7 @@ class Led {
     func startBlink() {
         print("\(#function) called on \(String(describing: type(of: self)))")
         Observable<Int>.interval(defaultBlinkInterval, scheduler: MainScheduler.instance)
+            .debug()
             .subscribe { [unowned self] _ in
                 self.toggle()
             }.addDisposableTo(blinkDisposeBag)
