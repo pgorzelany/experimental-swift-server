@@ -11,15 +11,13 @@
 #endif
 import Foundation
 import SwiftyGPIO
-import RxSwift
 
 class Led {
     
     // MARK: Properties
     
-    let gpio: GPIO
-    var defaultBlinkInterval = 0.5
-    
+    private let gpio: GPIO
+    private let defaultBlinkInterval: useconds_t = 150 * 1000
     private var shouldBlink = false
     
     // MARK: Lifecycle
@@ -48,10 +46,10 @@ class Led {
     func startBlink() {
         print("\(#function) called on \(String(describing: type(of: self)))")
         shouldBlink = true
-        repeat {
-            usleep(150 * 1000)
+        while shouldBlink {
+            usleep(defaultBlinkInterval)
             toggle()
-        } while (shouldBlink)
+        }
     }
     
     func stopBlink() {
