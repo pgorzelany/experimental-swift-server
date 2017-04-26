@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyGPIO
+import RxSwift
 
 class Led {
     
@@ -16,7 +17,7 @@ class Led {
     let gpio: GPIO
     var defaultBlinkInterval = 0.5
     
-    private var blinkTimer: Timer?
+    private var blinkDisposeBag = DisposeBag()
     
     // MARK: Lifecycle
     
@@ -43,15 +44,14 @@ class Led {
     
     func startBlink() {
         print("\(#function) called on \(String(describing: type(of: self)))")
-        blinkTimer = Timer.scheduledTimer(withTimeInterval: defaultBlinkInterval, repeats: true, block: { (timer) in
-            self.toggle()
-        })
-        blinkTimer?.fire()
+        Observable<Int>.interval(defaultBlinkInterval, scheduler: MainScheduler.instance)
+            .subscribe { [unowned self] _ in
+                self.toggle()
+            }.addDisposableTo(blinkDisposeBag)
     }
     
     func stopBlink() {
-        blinkTimer?.invalidate()
-        blinkTimer = nil
+        blinkDisposeBag = DisposeBag()
         switchOff()
     }
 }
