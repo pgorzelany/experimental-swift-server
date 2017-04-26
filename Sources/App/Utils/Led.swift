@@ -46,6 +46,7 @@ class Led {
         blinkTimer = Timer.scheduledTimer(withTimeInterval: defaultBlinkInterval, repeats: true, block: { (timer) in
             self.toggle()
         })
+        blinkTimer?.fire()
     }
     
     func stopBlink() {
