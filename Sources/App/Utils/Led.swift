@@ -50,6 +50,7 @@ class Led {
         shouldBlink = true
         repeat {
             usleep(150 * 1000)
+            toggle()
         } while (shouldBlink)
     }
     
