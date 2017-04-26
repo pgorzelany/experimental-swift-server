@@ -41,10 +41,12 @@ class Led {
     }
     
     func startBlink() {
+        print("\(#function) called on \(String(describing: type(of: self)))")
         blinkTimer = Timer(timeInterval: defaultBlinkInterval, repeats: true, block: { [unowned self](timer) in
             print("Toggling led")
             self.toggle()
         })
+        blinkTimer?.fire()
     }
     
     func stopBlink() {
