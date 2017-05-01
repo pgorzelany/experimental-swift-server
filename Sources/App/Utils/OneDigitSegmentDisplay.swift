@@ -84,23 +84,61 @@ class OneDigitSegmentDisplay {
             switchSegment(.e, to: 1)
             switchSegment(.f, to: 1)
         case .one:
-            break
+            switchSegment(.a, to: 1)
+            switchSegment(.b, to: 1)
+            switchSegment(.c, to: 1)
         case .two:
-            break
+            switchSegment(.a, to: 1)
+            switchSegment(.b, to: 1)
+            switchSegment(.g, to: 1)
+            switchSegment(.e, to: 1)
+            switchSegment(.d, to: 1)
         case .three:
-            break
+            switchSegment(.a, to: 1)
+            switchSegment(.b, to: 1)
+            switchSegment(.g, to: 1)
+            switchSegment(.c, to: 1)
+            switchSegment(.d, to: 1)
         case .four:
-            break
+            switchSegment(.f, to: 1)
+            switchSegment(.g, to: 1)
+            switchSegment(.b, to: 1)
+            switchSegment(.c, to: 1)
         case .five:
-            break
+            switchSegment(.a, to: 1)
+            switchSegment(.f, to: 1)
+            switchSegment(.g, to: 1)
+            switchSegment(.c, to: 1)
+            switchSegment(.d, to: 1)
         case .six:
-            break
+            switchSegment(.a, to: 1)
+            switchSegment(.f, to: 1)
+            switchSegment(.g, to: 1)
+            switchSegment(.c, to: 1)
+            switchSegment(.d, to: 1)
+            switchSegment(.e, to: 1)
         case .seven:
-            break
+            switchSegment(.a, to: 1)
+            switchSegment(.f, to: 1)
+            switchSegment(.g, to: 1)
+            switchSegment(.c, to: 1)
+            switchSegment(.d, to: 1)
+            switchSegment(.e, to: 1)
         case .eight:
-            break
+            switchSegment(.a, to: 1)
+            switchSegment(.b, to: 1)
+            switchSegment(.c, to: 1)
+            switchSegment(.d, to: 1)
+            switchSegment(.e, to: 1)
+            switchSegment(.f, to: 1)
+            switchSegment(.g, to: 1)
         case .nine:
-            break
+            switchSegment(.a, to: 1)
+            switchSegment(.b, to: 1)
+            switchSegment(.c, to: 1)
+            switchSegment(.d, to: 1)
+            switchSegment(.f, to: 1)
+            switchSegment(.g, to: 1)
         }
     }
     
