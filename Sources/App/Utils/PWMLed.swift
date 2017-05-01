@@ -17,13 +17,14 @@ class PWMLed {
     
     private let pwm: PWMOutput
     private var intensity = 1.0
-    private var defaultPeriod = 500
+    private var defaultPeriod = 1000000
     
     // MARK: Lifecycle
     
     init(pwm: PWMOutput) {
         self.pwm = pwm
         pwm.initPWM()
+        pwm.stopPWM()
     }
     
     // MARK: Public methods
