@@ -105,6 +105,7 @@ class OneDigitSegmentDisplay {
     }
     
     func switchOff() {
+        print("Switch segment off called")
         self.gpios.forEach { (gpio) in
             gpio.value = 0
         }
