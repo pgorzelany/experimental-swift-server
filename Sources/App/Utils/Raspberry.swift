@@ -83,7 +83,7 @@ class Raspberry: RaspberryApi {
     }
     
     func setLedIntensity(_ intensity: Double) {
-        print("\(#function) called on \(String(describing: type(of: self)))")
+        print("\(#function) called on \(String(describing: type(of: self))), with intensity: \(intensity)")
         pwmLed.setIntensity(intensity)
     }
     
