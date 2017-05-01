@@ -84,7 +84,6 @@ class OneDigitSegmentDisplay {
             switchSegment(.e, to: 1)
             switchSegment(.f, to: 1)
         case .one:
-            switchSegment(.a, to: 1)
             switchSegment(.b, to: 1)
             switchSegment(.c, to: 1)
         case .two:
@@ -119,11 +118,8 @@ class OneDigitSegmentDisplay {
             switchSegment(.e, to: 1)
         case .seven:
             switchSegment(.a, to: 1)
-            switchSegment(.f, to: 1)
-            switchSegment(.g, to: 1)
+            switchSegment(.b, to: 1)
             switchSegment(.c, to: 1)
-            switchSegment(.d, to: 1)
-            switchSegment(.e, to: 1)
         case .eight:
             switchSegment(.a, to: 1)
             switchSegment(.b, to: 1)
