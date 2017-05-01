@@ -12,8 +12,15 @@ import SwiftyGPIO
 class Raspberry: RaspberryApi {
     
     struct Config {
-        static let defaultLedGpioName = GPIOName.P27
+        static let defaultLedGpioName = GPIOName.P16
         static let defaultPWMLedGpioName = GPIOName.P18
+        static let defaultOneSegmentAGpioName = GPIOName.P19
+        static let defaultOneSegmentBGpioName = GPIOName.P26
+        static let defaultOneSegmentCGpioName = GPIOName.P27
+        static let defaultOneSegmentDGpioName = GPIOName.P17
+        static let defaultOneSegmentEGpioName = GPIOName.P4
+        static let defaultOneSegmentFGpioName = GPIOName.P6
+        static let defaultOneSegmentGGpioName = GPIOName.P5
     }
     
     // MARK: Shared instance
@@ -24,12 +31,14 @@ class Raspberry: RaspberryApi {
     
     private let led: Led
     private let pwmLed: PWMLed
+    private let oneSegmentDisplay: OneDigitSegmentDisplay
     
     // MARK: Lifecycle
     
-    init(led: Led, pwmLed: PWMLed) {
+    init(led: Led, pwmLed: PWMLed, oneSegmentDisplay: OneDigitSegmentDisplay) {
         self.led = led
         self.pwmLed = pwmLed
+        self.oneSegmentDisplay = oneSegmentDisplay
     }
     
     convenience init() {
@@ -39,7 +48,16 @@ class Raspberry: RaspberryApi {
         let ledPWM = pwms[0]![Config.defaultPWMLedGpioName]!
         let pwmLed = PWMLed(pwm: ledPWM)
         let led = Led(gpio: ledGPIO)
-        self.init(led: led, pwmLed: pwmLed)
+        let oneSegmentDisplay = OneDigitSegmentDisplay(gpios: [
+            gpios[Config.defaultOneSegmentAGpioName]!,
+            gpios[Config.defaultOneSegmentBGpioName]!,
+            gpios[Config.defaultOneSegmentCGpioName]!,
+            gpios[Config.defaultOneSegmentDGpioName]!,
+            gpios[Config.defaultOneSegmentEGpioName]!,
+            gpios[Config.defaultOneSegmentFGpioName]!,
+            gpios[Config.defaultOneSegmentGGpioName]!,
+            ])
+        self.init(led: led, pwmLed: pwmLed, oneSegmentDisplay: oneSegmentDisplay)
     }
     
     // MARK: Public methods
@@ -67,5 +85,9 @@ class Raspberry: RaspberryApi {
     func setLedIntensity(_ intensity: Double) {
         print("\(#function) called on \(String(describing: type(of: self)))")
         pwmLed.setIntensity(intensity)
+    }
+    
+    func displayDigit(_ digit: OneDigitSegmentDisplay.Digit) {
+        
     }
 }

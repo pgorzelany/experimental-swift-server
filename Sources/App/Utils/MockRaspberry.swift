@@ -31,4 +31,8 @@ class MockRaspberry: RaspberryApi {
     func setLedIntensity(_ intensity: Double) {
         print("\(#function) called on \(String(describing: type(of: self)))")
     }
+    
+    func displayDigit(_ digit: OneDigitSegmentDisplay.Digit) {
+        print("\(#function) called on \(String(describing: type(of: self)))")
+    }
 }

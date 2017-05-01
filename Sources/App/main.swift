@@ -1,5 +1,4 @@
 import Vapor
-import SwiftyGPIO
 
 let drop = Droplet()
 let raspberry = RaspberryFactory.getRaspberry()
@@ -35,6 +34,14 @@ drop.patch("led", "intensity") { (request) in
     
     raspberry.setLedIntensity(intensity)
     return "Ok"
+}
+
+drop.patch("displayDigit", Int.self) { (request, digit) in
+    guard let digit = OneDigitSegmentDisplay.Digit(rawValue: digit) else {
+        throw Abort.badRequest
+    }
+    raspberry.displayDigit(digit)
+    return "OK"
 }
 
 drop.run()
