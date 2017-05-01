@@ -21,6 +21,7 @@ class OneDigitSegmentDisplay {
     
     // MARK: Properties
     
+    private let gpios: [GPIO]
     private let agpio: GPIO
     private let bgpio: GPIO
     private let cgpio: GPIO
@@ -36,6 +37,7 @@ class OneDigitSegmentDisplay {
             fatalError("There should be 7 gpios for the one digit segment display")
         }
         
+        self.gpios = gpios
         self.agpio = gpios[0]
         self.bgpio = gpios[1]
         self.cgpio = gpios[2]
@@ -43,13 +45,9 @@ class OneDigitSegmentDisplay {
         self.egpio = gpios[4]
         self.fgpio = gpios[5]
         self.ggpio = gpios[6]
-        self.agpio.direction = .OUT
-        self.bgpio.direction = .OUT
-        self.cgpio.direction = .OUT
-        self.dgpio.direction = .OUT
-        self.egpio.direction = .OUT
-        self.fgpio.direction = .OUT
-        self.ggpio.direction = .OUT
+        self.gpios.forEach { (gpio) in
+            gpio.direction = .OUT
+        }
     }
     
     // MARK: Private methods
@@ -76,11 +74,39 @@ class OneDigitSegmentDisplay {
     // MARK: Public methods
     
     func displayDigit(_ digit: Digit) {
+        switchOff()
         switch digit {
-        default:
+        case .zero:
             switchSegment(.a, to: 1)
+            switchSegment(.b, to: 1)
+            switchSegment(.c, to: 1)
+            switchSegment(.d, to: 1)
+            switchSegment(.e, to: 1)
+            switchSegment(.f, to: 1)
+        case .one:
+            break
+        case .two:
+            break
+        case .three:
+            break
+        case .four:
+            break
+        case .five:
+            break
+        case .six:
+            break
+        case .seven:
+            break
+        case .eight:
+            break
+        case .nine:
+            break
         }
     }
     
-    
+    func switchOff() {
+        self.gpios.forEach { (gpio) in
+            gpio.value = 0
+        }
+    }
 }
