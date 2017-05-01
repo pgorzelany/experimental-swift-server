@@ -36,7 +36,7 @@ class PWMLed {
     
     func switchOn() {
         let dutyCycle = getPWMDutyCycle(for: intensity)
-        pwm.startPWM(period: defaultPeriod, duty: 50)
+//        pwm.startPWM(period: defaultPeriod, duty: 50)
     }
     
     func switchOff() {
