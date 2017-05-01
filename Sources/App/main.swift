@@ -36,11 +36,16 @@ drop.patch("led", "intensity") { (request) in
     return "Ok"
 }
 
-drop.patch("displayDigit", Int.self) { (request, digit) in
+drop.patch("digitSegment", Int.self) { (request, digit) in
     guard let digit = OneDigitSegmentDisplay.Digit(rawValue: digit) else {
         throw Abort.badRequest
     }
     raspberry.displayDigit(digit)
+    return "OK"
+}
+
+drop.patch("digitSegment", "switchOff") { (request) in
+    raspberry.switchDigitDisplaySegmentOff()
     return "OK"
 }
 

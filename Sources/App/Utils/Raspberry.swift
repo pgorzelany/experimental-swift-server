@@ -91,4 +91,9 @@ class Raspberry: RaspberryApi {
         print("\(#function) called on \(String(describing: type(of: self)))")
         oneSegmentDisplay.displayDigit(digit)
     }
+    
+    func switchDigitDisplaySegmentOff() {
+        print("\(#function) called on \(String(describing: type(of: self)))")
+        oneSegmentDisplay.switchOff()
+    }
 }

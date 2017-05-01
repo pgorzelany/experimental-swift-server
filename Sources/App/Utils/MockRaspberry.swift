@@ -35,4 +35,8 @@ class MockRaspberry: RaspberryApi {
     func displayDigit(_ digit: OneDigitSegmentDisplay.Digit) {
         print("\(#function) called on \(String(describing: type(of: self)))")
     }
+    
+    func switchDigitDisplaySegmentOff() {
+        print("\(#function) called on \(String(describing: type(of: self)))")
+    }
 }

@@ -16,4 +16,5 @@ protocol RaspberryApi: class {
     func stopLedBlink()
     func setLedIntensity(_ intensity: Double)
     func displayDigit(_ digit: OneDigitSegmentDisplay.Digit)
+    func switchDigitDisplaySegmentOff()
 }
