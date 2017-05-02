@@ -108,6 +108,6 @@ class Raspberry: RaspberryApi {
     }
     
     func toggleRGBLedColor(_ color: RGBLed.Color) {
-//        rgbLed.toggleColor(color)
+        rgbLed.toggleColor(color)
     }
 }
