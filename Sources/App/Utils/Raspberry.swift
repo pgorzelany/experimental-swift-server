@@ -21,9 +21,9 @@ class Raspberry: RaspberryApi {
         static let defaultOneSegmentEGpioName = GPIOName.P4
         static let defaultOneSegmentFGpioName = GPIOName.P6
         static let defaultOneSegmentGGpioName = GPIOName.P5
-        static let defaultRGBLedRedGpioName = GPIOName.P0
-        static let defaultRGBLedGreenGpioName = GPIOName.P0
-        static let defaultRGBLedBlueGpioName = GPIOName.P0
+        static let defaultRGBLedRedGpioName = GPIOName.P12
+        static let defaultRGBLedGreenGpioName = GPIOName.P20
+        static let defaultRGBLedBlueGpioName = GPIOName.P21
     }
     
     // MARK: Shared instance
