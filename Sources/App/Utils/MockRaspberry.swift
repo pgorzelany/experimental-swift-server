@@ -39,4 +39,8 @@ class MockRaspberry: RaspberryApi {
     func switchDigitDisplaySegmentOff() {
         print("\(#function) called on \(String(describing: type(of: self)))")
     }
+    
+    func toggleRGBLedColor(_ color: RGBLed.Color) {
+        print("\(#function) called on \(String(describing: type(of: self)))")
+    }
 }

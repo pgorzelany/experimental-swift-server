@@ -49,4 +49,9 @@ drop.patch("digitSegment", "switchOff") { (request) in
     return "OK"
 }
 
+drop.patch("rgbLed", RGBLed.Color.self, "toggle") { (request, color) in
+    raspberry.toggleRGBLedColor(color)
+    return "OK"
+}
+
 drop.run()

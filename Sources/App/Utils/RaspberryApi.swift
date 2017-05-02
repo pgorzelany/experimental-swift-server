@@ -17,4 +17,5 @@ protocol RaspberryApi: class {
     func setLedIntensity(_ intensity: Double)
     func displayDigit(_ digit: OneDigitSegmentDisplay.Digit)
     func switchDigitDisplaySegmentOff()
+    func toggleRGBLedColor(_ color: RGBLed.Color)
 }

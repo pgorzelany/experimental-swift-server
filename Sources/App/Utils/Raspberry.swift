@@ -21,6 +21,9 @@ class Raspberry: RaspberryApi {
         static let defaultOneSegmentEGpioName = GPIOName.P4
         static let defaultOneSegmentFGpioName = GPIOName.P6
         static let defaultOneSegmentGGpioName = GPIOName.P5
+        static let defaultRGBLedRedGpioName = GPIOName.P0
+        static let defaultRGBLedGreenGpioName = GPIOName.P0
+        static let defaultRGBLedBlueGpioName = GPIOName.P0
     }
     
     // MARK: Shared instance
@@ -32,13 +35,15 @@ class Raspberry: RaspberryApi {
     private let led: Led
     private let pwmLed: PWMLed
     private let oneSegmentDisplay: OneDigitSegmentDisplay
+    private let rgbLed: RGBLed
     
     // MARK: Lifecycle
     
-    init(led: Led, pwmLed: PWMLed, oneSegmentDisplay: OneDigitSegmentDisplay) {
+    init(led: Led, pwmLed: PWMLed, oneSegmentDisplay: OneDigitSegmentDisplay, rgbLed: RGBLed) {
         self.led = led
         self.pwmLed = pwmLed
         self.oneSegmentDisplay = oneSegmentDisplay
+        self.rgbLed = rgbLed
     }
     
     convenience init() {
@@ -57,7 +62,12 @@ class Raspberry: RaspberryApi {
             gpios[Config.defaultOneSegmentFGpioName]!,
             gpios[Config.defaultOneSegmentGGpioName]!,
             ])
-        self.init(led: led, pwmLed: pwmLed, oneSegmentDisplay: oneSegmentDisplay)
+        let rgbLed = RGBLed(
+            red: gpios[Config.defaultRGBLedRedGpioName]!,
+            green: gpios[Config.defaultRGBLedRedGpioName]!,
+            blue: gpios[Config.defaultRGBLedRedGpioName]!
+        )
+        self.init(led: led, pwmLed: pwmLed, oneSegmentDisplay: oneSegmentDisplay, rgbLed: rgbLed)
     }
     
     // MARK: Public methods
@@ -95,5 +105,9 @@ class Raspberry: RaspberryApi {
     func switchDigitDisplaySegmentOff() {
         print("\(#function) called on \(String(describing: type(of: self)))")
         oneSegmentDisplay.switchOff()
+    }
+    
+    func toggleRGBLedColor(_ color: RGBLed.Color) {
+//        rgbLed.toggleColor(color)
     }
 }
