@@ -21,9 +21,9 @@ class Raspberry: RaspberryApi {
         static let defaultOneSegmentEGpioName = GPIOName.P4
         static let defaultOneSegmentFGpioName = GPIOName.P6
         static let defaultOneSegmentGGpioName = GPIOName.P5
-        static let defaultRGBLedRedGpioName = GPIOName.P12
+        static let defaultRGBLedRedGpioName = GPIOName.P21
         static let defaultRGBLedGreenGpioName = GPIOName.P20
-        static let defaultRGBLedBlueGpioName = GPIOName.P21
+        static let defaultRGBLedBlueGpioName = GPIOName.P12
     }
     
     // MARK: Shared instance
@@ -64,8 +64,8 @@ class Raspberry: RaspberryApi {
             ])
         let rgbLed = RGBLed(
             red: gpios[Config.defaultRGBLedRedGpioName]!,
-            green: gpios[Config.defaultRGBLedRedGpioName]!,
-            blue: gpios[Config.defaultRGBLedRedGpioName]!
+            green: gpios[Config.defaultRGBLedGreenGpioName]!,
+            blue: gpios[Config.defaultRGBLedBlueGpioName]!
         )
         self.init(led: led, pwmLed: pwmLed, oneSegmentDisplay: oneSegmentDisplay, rgbLed: rgbLed)
     }
