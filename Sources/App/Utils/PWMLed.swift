@@ -17,7 +17,7 @@ class PWMLed {
     
     private let pwm: PWMOutput
     private var intensity = 1.0
-    private var defaultPeriod = 10000000
+    private var defaultPeriod = 10000000 // nanoseconds
     
     // MARK: Lifecycle
     
@@ -36,7 +36,7 @@ class PWMLed {
     
     func switchOn() {
         let dutyCycle = getPWMDutyCycle(for: intensity)
-//        pwm.startPWM(period: defaultPeriod, duty: 50)
+        pwm.startPWM(period: defaultPeriod, duty: dutyCycle)
     }
     
     func switchOff() {
