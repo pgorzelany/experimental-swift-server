@@ -12,14 +12,18 @@ import Vapor
 
 class RGBLed {
     
-    enum Color: String, StringInitializable {
+    enum Color: String, Parameterizable {
+        
         case red, green, blue
         
-        init?(from string: String) throws {
-            guard let color = Color(rawValue: string) else {
-                return nil
+        static let uniqueSlug = "color"
+        
+        static func make(for parameter: String) throws -> RGBLed.Color {
+            guard let color = Color(rawValue: parameter) else {
+                throw Abort.badRequest
             }
-            self = color
+            
+            return color
         }
     }
     

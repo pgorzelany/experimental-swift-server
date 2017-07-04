@@ -1,6 +1,6 @@
 import Vapor
 
-let drop = Droplet()
+let drop = try Droplet()
 let raspberry = RaspberryFactory.getRaspberry()
 
 drop.get { req in
@@ -36,8 +36,9 @@ drop.patch("led", "intensity") { (request) in
     return "Ok"
 }
 
-drop.patch("digitSegment", Int.self) { (request, digit) in
-    guard let digit = OneDigitSegmentDisplay.Digit(rawValue: digit) else {
+drop.patch("digitSegment", Int.parameter) { (request) -> ResponseRepresentable in
+    let rawDigit = try request.parameters.next(Int.self)
+    guard let digit = OneDigitSegmentDisplay.Digit(rawValue: rawDigit) else {
         throw Abort.badRequest
     }
     raspberry.displayDigit(digit)
@@ -49,9 +50,10 @@ drop.patch("digitSegment", "switchOff") { (request) in
     return "OK"
 }
 
-drop.patch("rgbLed", RGBLed.Color.self, "toggle") { (request, color) in
+drop.patch("rgbLed", RGBLed.Color.parameter, "toggle") { (request) in
+    let color = try request.parameters.next(RGBLed.Color.self)
     raspberry.toggleRGBLedColor(color)
     return "OK"
 }
 
-drop.run()
+try drop.run()
